@@ -28,7 +28,6 @@ public class MazeTest2
 		maze2.addConnection(15,19);
 		
 		maze2.getDirections(maze2.mazeNodes[0], maze2.mazeNodes[19]);
-		maze2.getDirections(maze2.mazeNodes[19], maze2.mazeNodes[0]);
 		maze2.getDirections(maze2.mazeNodes[7], maze2.mazeNodes[15]);
 		
 		System.out.println("**Add an edge between 2 and 15 (to give quicker path to 19)**");

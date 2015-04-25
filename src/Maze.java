@@ -65,7 +65,7 @@ public class Maze
 		ArrayList<MazeNode> unvisited = new ArrayList<MazeNode>();
 		for(int i=0; i<mazeSize; i++)
 		{
-			if( 1==mazeConnections[nodeIn.label][i] && !mazeNodes[i].visited )
+			if( mazeConnections[nodeIn.label][i]==1 && !mazeNodes[i].visited )
 			{
 				unvisited.add(mazeNodes[i]);
 			}
@@ -81,6 +81,7 @@ public class Maze
 	 */
 	public void getDirections(MazeNode start, MazeNode goal)
 	{
+		// Make sure all nodes are set to unvisited.
 		for(MazeNode node: mazeNodes)
 		{
 			node.visited = false;
@@ -108,11 +109,11 @@ public class Maze
 	        {
 	            for(MazeNode adjNode: getUnvisitedAdjacent(currentNode))
 	            {
-	                if(!adjNode.visited)
+	                if(!q.contains(adjNode))
 	                {
-	                    q.add(adjNode);
-	                    adjNode.visited=true;
-	                    nextNode.put(currentNode,adjNode);
+	                	q.add(adjNode);
+		                adjNode.visited=true;
+		                nextNode.put(currentNode,adjNode);
 	                }
 	            }
 	        }
@@ -128,9 +129,11 @@ public class Maze
 
 	    // Reconstruct the path between nodes.
 	    ArrayList<MazeNode> path = new ArrayList<MazeNode>();
-	    for (MazeNode current=start; current!=null; current=nextNode.get(current))
+	    MazeNode current = start;
+	    while(current!=null)
 	    {
 	        path.add(current);
+	        current=nextNode.get(current);
 	    }
 	    if(!path.contains(goal))
 	    {
