@@ -18,7 +18,7 @@ public class MazeTest
 		maze1.addConnection(7,8);
 		maze1.addConnection(5,8); 
 		
-		// Get directions between node 0 and 8
+		// Test different paths
 		maze1.getDirections(maze1.mazeNodes[0], maze1.mazeNodes[8]);
 		maze1.getDirections(maze1.mazeNodes[0], maze1.mazeNodes[1]);
 		maze1.getDirections(maze1.mazeNodes[3], maze1.mazeNodes[8]);
